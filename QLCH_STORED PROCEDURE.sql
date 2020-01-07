@@ -199,3 +199,4 @@ AS
 	FROM SAN_PHAM 
 	WHERE TEN_SP Like '%'+@SEARCH+'%'
 GO
+
