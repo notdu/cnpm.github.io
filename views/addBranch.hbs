@@ -1,0 +1,30 @@
+<div class="col-sm-9" style="margin-top: 120px; margin-left:-50px">
+  <div class="content_menu">
+    <div class="content">
+      <h3>Add Branch </h3>
+      <hr>
+
+      <form id="addCategory" method="POST" onsubmit="return check()">
+        
+        
+        <div class="form-group">
+          <label for="txtcatName">Branch's name</label>
+          <input type="text" name="TEN_CN" class="form-control" id="TEN_CN" placeholder="Enter name">
+
+        </div>
+        <div class="form-group">
+          <label for="txtcatName">Address</label>
+          <input type="text" name="DIA_CHI_CN" class="form-control" id="DIA_CHI_CN" placeholder="Enter name">
+
+        </div>
+        <a href="/branch" class="btn btn-outline-info">
+          <i class="fa fa-backward" aria-hidden="true"></i>
+          Back</a>
+        <button type="submit" formaction="/branch/add" id="addC" class="btn btn-primary">
+          <i class="fa fa-check" aria-hidden="true"></i>
+          Add</button>
+        
+      </form>
+    </div>
+  </div>
+</div>  
