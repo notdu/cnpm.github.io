@@ -37,7 +37,7 @@ app.use(express.static('public'));
 // app.use(require('./middlewares/locals.mdw'));
 
 // require('./middlewares/locals.mdw')(app);
- require('./middlewares/routes.mdw')(app);
+
 
 
 
@@ -78,16 +78,23 @@ app.post('/login', async(req, res) => {
 app.use((req, res, next) => {
     if (typeof(req.session.user) == 'undefined') {
         return res.redirect('/login');
+    } else {
+        res.locals.user = req.session.user;
+        console.log(res.locals.user);
+        next();
     }
-    next();
 })
 
-
+require('./middlewares/routes.mdw')(app);
 app.get('/', (req, res) => {
     res.render('index.hbs');
 });
 // default error handler
 
+app.post('/account/logout', (req, res) => {
+    delete req.session.user;
+    res.redirect('/');
+});
 app.use((err, req, res, next) => {
     // res.render('vwError/index');
     console.error(err.stack);
