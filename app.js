@@ -33,7 +33,7 @@ app.use(express.static('public'));
 // app.use(require('./middlewares/locals.mdw'));
 
 // require('./middlewares/locals.mdw')(app);
-// require('./middlewares/routes.mdw')(app);
+ require('./middlewares/routes.mdw')(app);
 
 app.use((req, res, next) => {
     next();
