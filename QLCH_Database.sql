@@ -50,6 +50,24 @@ create table CHI_NHANH
 	primary key(ID_CN)
 )
 
+create table DON_HANG
+(
+	ID_DH int,
+	CHI_NHANH int, --ID Chi nhánh
+	NGAY_BAN date,
+	TONG_TIEN float,
+	primary key (ID_DH)
+)
+
+create table GIO_HANG
+(
+	ID_DH int,
+	ID_SP int,
+	SO_LUONG int,
+	THANH_TIEN float,
+	primary key (ID_DH, ID_SP)
+)
+
 create table SP_CN --cho biết số lượng sản phẩm thuộc mỗi chi nhánh
 (
 	ID_SP int,
@@ -87,6 +105,17 @@ foreign key (ID_CN) references CHI_NHANH(ID_CN)
 --NHÂN VIÊN
 alter table NHAN_VIEN add constraint FK_CHI_NHANH_NHAN_VIEN
 foreign key (CHI_NHANH_LAM_VIEC) references CHI_NHANH(ID_CN)
+
+--ĐƠN HÀNG
+alter table DON_HANG add constraint FK_CHI_NHANH_DON_HANG
+foreign key (CHI_NHANH) references CHI_NHANH(ID_CN)
+
+--GIỎ HÀNG
+alter table GIO_HANG add constraint FK_SAN_PHAM_GIO_HANG
+foreign key (ID_SP) references SAN_PHAM(ID_SP)
+
+alter table GIO_HANG add constraint FK_DON_HANG_GIO_HANG
+foreign key (ID_DH) references DON_HANG(ID_DH)
 
 --TÀI KHOẢN
 alter table TAI_KHOAN add constraint FK_NHAN_VIEN_TAI_KHOAN
