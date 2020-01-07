@@ -9,8 +9,7 @@ create table SAN_PHAM
 	ID_SP int,
 	TEN_SP nvarchar(50),
 	LOAI_SP varchar(10), --ID loai sản phẩm
-	HSD date,
-	DON_GIA money,
+	DON_GIA int,
 	primary key (ID_SP)
 )
 
@@ -26,10 +25,10 @@ create table NHAN_VIEN
 	ID_NV int,
 	TEN_NV nvarchar(50),
 	NGAY_SINH date,
-	PHAI bit, --0: Nam, 1: Nữ
-	SĐT char(10),
+	PHAI nvarchar(10), -- Nam,  Nữ
+	SDT char(10),
 	DIA_CHI_NV nvarchar(50),
-	LUONG money,
+	LUONG float,
 	CHI_NHANH_LAM_VIEC int, -- ID chi nhánh
 	LOAI_NV int, --0: CEO, 1: Quản lý, 2: Bán hàng
 	primary key (ID_NV)
@@ -57,26 +56,6 @@ create table SP_CN --cho biết số lượng sản phẩm thuộc mỗi chi nh�
 	ID_CN int,
 	SO_LUONG int,
 	primary key (ID_SP, ID_CN)
-)
-
-create table DON_HANG
-(
-	ID_DH int,
-	NGUOI_BAN int, --ID Nhan viên
-	CHI_NHANH int, --ID Chi nhánh
-	NGAY_BAN date,
-	TONG_TIEN money,
-	primary key (ID_DH)
-)
-
-create table GIO_HANG
-(
-	ID_DH int,
-	ID_SP int,
-	SO_LUONG int,
-	DON_GIA money,
-	THANH_TIEN money,
-	primary key (ID_DH, ID_SP)
 )
 
 create table DON_NHAP_HANG
@@ -112,20 +91,6 @@ foreign key (CHI_NHANH_LAM_VIEC) references CHI_NHANH(ID_CN)
 --TÀI KHOẢN
 alter table TAI_KHOAN add constraint FK_NHAN_VIEN_TAI_KHOAN
 foreign key (MA_NHAN_VIEN) references NHAN_VIEN(ID_NV)
-
---ĐƠN HÀNG
-alter table DON_HANG add constraint FK_CHI_NHANH_DON_HANG
-foreign key (CHI_NHANH) references CHI_NHANH(ID_CN)
-
-alter table DON_HANG add constraint FK_NHAN_VIEN_DON_HANG
-foreign key (NGUOI_BAN) references NHAN_VIEN(ID_NV)
-
---GIỎ HÀNG
-alter table GIO_HANG add constraint FK_SAN_PHAM_GIO_HANG
-foreign key (ID_SP) references SAN_PHAM(ID_SP)
-
-alter table GIO_HANG add constraint FK_DON_HANG_GIO_HANG
-foreign key (ID_DH) references DON_HANG(ID_DH)
 
 --ĐƠN NHẬP HÀNG
 alter table DON_NHAP_HANG add constraint FK_SAN_PHAM_DON_NHAP_HANG
