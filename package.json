@@ -18,6 +18,7 @@
     },
     "homepage": "https://github.com/huudutg/cnpm.github.io#readme",
     "dependencies": {
+        "all": "0.0.0",
         "bcryptjs": "^2.4.3",
         "express": "^4.17.1",
         "express-async-errors": "^3.1.1",
