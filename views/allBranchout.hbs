@@ -1,7 +1,10 @@
-<div class="col-12" style="margin-top: 20px;">
+<div class="col-12" style="margin-top: 20px; margin-left:-50px">
   <div class="content_menu">
     <div class="content">
-      <h3>All product </h3>
+      <div class="top">
+
+      
+      <h3 style="margin-top: 100px;">ALL BRANCH </h3>
       <hr>
       
       <div class=" d-flex align-items-center">
@@ -23,8 +26,8 @@
         {{!-- <a  id="addCategory" class="btn btn-info my-2 mr-3 py-0 text-center" style="width:auto; height: 38px;">+ Add item</a> --}}
 
 
-<a  href="/admin/categories/add" class="btn btn-info my-2 mr-3 py-0 text-center" style="width:auto; height: 38px;">+ Add item</a>
-
+<a  href="branch/add" class="btn btn-info my-2 mr-3 py-0 text-center" style="width:auto; height: 38px;">+ Add item</a>
+</div>
 <form id="addCat" method="POST" style="display: none;">  
   <input name="ten_DM_cha" type="text" id="ten_DM_cha">
   <button id="addC" type="submit" > </button>
@@ -43,21 +46,23 @@
         <thead>
           <tr>
             <th scope="row"><input type="checkbox" name="vehicle1" value="Bike"> STT</th>
-            <th scope="col">Categories's name</th>
+            <th scope="col">Branch's name</th>
+            <th scope="col">Address</th>
             <th scope="col">Edit</th>
           </tr>
         </thead>
         <tbody>
-          {{#each this.categories}}
+          {{#rows}}
           <tr>
-            <th scope="row"><input type="checkbox" name="vehicle1" value="Bike"> {{id}}</th>
-            <td><a href="/admin/categories/{{id}}">{{ten_DM_cha}}</a></td>
+            <th scope="row"><input type="checkbox" name="vehicle1" value="Bike"> {{ID_CN}}</th>
+            <td><a href="/branch/out/{{ID_CN}}">{{TEN_CN}}</a></td>
+            <td>{{DIA_CHI_CN}}</td>
             <td class=" text-left">
-              <a class=" btn btn-outline-primary btn-sm" href="/admin/categories/edit/{{id}}"><i class="fa fa-pencil-square" ></i>
+              <a class=" btn btn-outline-primary btn-sm" href="/branch/edit/{{ID_CN}}"><i class="fa fa-pencil-square" ></i>
                </a>
             </td>
           </tr>
-          {{/each}}  
+          {{/rows}}  
 
         </tbody>
       </table>

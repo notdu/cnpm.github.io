@@ -1,0 +1,82 @@
+<div class="col-12" style="margin-top: 20px; margin-left:-50px">
+  <div class="content_menu">
+    <div class="content">
+      <div class="top">
+
+      
+      <h3 style="margin-top: 100px;">All products</h3>
+      <hr>
+      
+      <div class=" d-flex align-items-center">
+        <button class="btn btn-secondary btn-sm dropdown-toggle my-2 mr-3" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Filter
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+        <form class="form-inline mr-2 mt-2 mt-md-0" action="/product/search" method="get">
+          <input name="keyword" class="form-control mr-sm-2" style="display: inline-block;width: 550px;" type="text"
+            placeholder="Search" aria-label="Search">
+           
+        <button type="submit" formaction="/product/search" id="addC" class="btn btn-outline-info my-2 mr-3 py-0 text-center" style="width:auto; height: 38px;">
+          <i class="fa fa-search" aria-hidden="true"></i>
+          Search</button>
+        </form>
+        {{!-- <a  id="addCategory" class="btn btn-info my-2 mr-3 py-0 text-center" style="width:auto; height: 38px;">+ Add item</a> --}}
+
+
+<a  href="/admin/categories/add" class="btn btn-info my-2 mr-3 py-0 text-center" style="width:auto; height: 38px;">+ Add item</a>
+</div>
+<form id="addCat" method="POST" style="display: none;">  
+  <input name="ten_DM_cha" type="text" id="ten_DM_cha">
+  <button id="addC" type="submit" > </button>
+</form>
+
+
+      </div>
+{{#if this.empty}}
+      <div class="card-body">
+        <p class="card-text">
+          Không có dữ liệu.
+        </p>
+      </div>
+      {{else}}
+      <table class="table mt-3">
+        <thead>
+          <tr>
+            <th scope="row"><input type="checkbox" name="vehicle1" value="Bike"> ID</th>
+            <th scope="col">Product's name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Price</th>
+            <th scope="col">Amount</th>
+
+            <th scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#rows}}
+          <tr>
+            <th scope="row"><input type="checkbox" name="vehicle1" value="Bike"> {{ID_SP}}</th>
+            <td>{{TEN_SP}}</td>
+            <td>{{TEN_LOAI}}</td>
+            <td>{{DON_GIA}}</td>
+            <td>{{sl}}</td>
+            <td class=" text-left">
+              <a class=" btn btn-outline-primary btn-sm" href="/product/edit/{{ID_SP}}"><i class="fa fa-pencil-square" ></i>
+               </a>
+            </td>
+          </tr>
+          {{/rows}}  
+
+        </tbody>
+      </table>
+      {{/if}}
+    </div>
+  </div>
+</div>
+

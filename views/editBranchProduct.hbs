@@ -1,0 +1,37 @@
+<div class="col-sm-9" style="margin-top: 120px; margin-left:-50px">
+  <div class="content_menu">
+    <div class="content">
+      <h3>Edit category </h3>
+      <hr>
+ <form id="addCategory" >
+        
+        <div class="form-group">
+          <label for="txtcatName">Product's name</label>
+          <input type="text" name="TEN_CN" class="form-control" id="TEN_SP" readonly value="{{rows.TEN_SP}}" >
+</div>
+ </form>
+      <form id="addCategory" method="POST" onsubmit="return check()">
+        <div class="form-group">
+          <label for="txtCatId">ID</label>
+          <input type="text" class="form-control" id="txtCatId" name="ID_SP" readonly value="{{rows.ID_SP}}">
+        </div>
+        <div class="form-group" style="display: none;">
+          <label for="txtCatId">ID</label>
+          <input type="text" class="form-control" id="txtCatId" name="ID_CN" readonly value="{{rows.ID_CN}}">
+        </div>
+        <div class="form-group">
+          <label for="txtcatName">Amount</label>
+          <input type="text" name="SO_LUONG" class="form-control" id="DIA_CHI_CN" value="{{rows.SO_LUONG}}" placeholder="Enter name">
+
+        </div>
+        <a href="/branch/{{rows.ID_CN}}" class="btn btn-outline-info">
+          <i class="fa fa-backward" aria-hidden="true"></i>
+          Back</a>
+        <button type="submit" formaction="/branch/{{rows.ID_CN}}/patch" id="addC" class="btn btn-primary">
+          <i class="fa fa-check" aria-hidden="true"></i>
+          Save</button>
+        
+      </form>
+    </div>
+  </div>
+</div>  

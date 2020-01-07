@@ -1,0 +1,47 @@
+<div class="col-sm-9" style="margin-top: 120px; margin-left:-50px">
+  <div class="content_menu">
+    <div class="content">
+      <h3>Edit product </h3>
+      <hr>
+
+      <form id="addCategory" method="POST" onsubmit="return check()">
+        <div class="form-group">
+          <label for="txtCatId">ID</label>
+          <input type="text" class="form-control" id="txtCatId" name="ID_SP" readonly value="{{rows.ID_SP}}">
+        </div>
+        <div class="form-group">
+          <label for="txtcatName">Product's name</label>
+          <input type="text" name="TEN_SP" class="form-control" id="TEN_CN" value="{{rows.TEN_SP}}" placeholder="Enter name">
+
+        </div>
+        <div class="form-group">
+    <label for="exampleFormControlSelect1">Example select</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="LOAI_SP">
+      
+      <option value="1">Nước ngọt</option>
+      <option value="2">Bia rượu</option value="1">
+      <option value="3">Bánh ngọt</option>
+      <option value="4">Snack</option>
+      <option value="5">Kẹo</option>
+      <option value="6">Kem</option>
+      <option value="7">Nước suối</option>
+    </select>
+  </div>
+         <div class="form-group">
+          <label for="txtcatName">Price</label>
+          <input type="text" name="DON_GIA" class="form-control" id="DIA_CHI_CN" value="{{rows.DON_GIA}}" placeholder="Enter name">
+
+        </div>
+        <a href="/product" class="btn btn-outline-info">
+          <i class="fa fa-backward" aria-hidden="true"></i>
+          Back</a>
+        <button type="submit" formaction="/product/patch" id="addC" class="btn btn-primary">
+          <i class="fa fa-check" aria-hidden="true"></i>
+          Save</button>
+        <button type="submit" formaction="/product/del" class="btn btn-danger">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+          Delete</button>
+      </form>
+    </div>
+  </div>
+</div>  
