@@ -12,6 +12,7 @@ app.engine('hbs', exphbs({
         section: hbs_sections(),
     }
 }));
+app.use(express.static('resources'));
 app.set('view engine', 'hbs');
 app.use(morgan('dev'));
 app.use(express.json());
@@ -27,13 +28,7 @@ app.engine('hbs', exphbs({
 
 app.use(express.static('public'));
 
-app.get('/', async (req, res) => {
 
-    res.render('home',{
-     
-       });
-      
-     })
 
 // app.use(require('./middlewares/locals.mdw'));
 
@@ -45,7 +40,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('index.hbs');
 });
 //
 // default error handler
