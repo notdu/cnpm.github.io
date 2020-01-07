@@ -94,36 +94,36 @@ create table DON_NHAP_HANG
 
 --SẢN PHẨM
 alter table SAN_PHAM add constraint FK_SAN_PHAM_DANH_MUC_SP
-foreign key (LOAI_SP) references DANH_MUC_SP(ID_LOAI)
+foreign key (LOAI_SP) references DANH_MUC_SP(ID_LOAI) on delete cascade on update cascade
 --SP_CN
 alter table SP_CN add constraint FK_SP_CN_SAN_PHAM
-foreign key (ID_SP) references SAN_PHAM(ID_SP)
+foreign key (ID_SP) references SAN_PHAM(ID_SP) on delete cascade on update cascade
 
 alter table SP_CN add constraint FK_CHI_NHANH_SP_CN
-foreign key (ID_CN) references CHI_NHANH(ID_CN)
+foreign key (ID_CN) references CHI_NHANH(ID_CN) on delete cascade on update cascade
 
 --NHÂN VIÊN
 alter table NHAN_VIEN add constraint FK_CHI_NHANH_NHAN_VIEN
-foreign key (CHI_NHANH_LAM_VIEC) references CHI_NHANH(ID_CN)
+foreign key (CHI_NHANH_LAM_VIEC) references CHI_NHANH(ID_CN) on delete cascade on update cascade
 
 --ĐƠN HÀNG
 alter table DON_HANG add constraint FK_CHI_NHANH_DON_HANG
-foreign key (CHI_NHANH) references CHI_NHANH(ID_CN)
+foreign key (CHI_NHANH) references CHI_NHANH(ID_CN) on delete cascade on update cascade
 
 --GIỎ HÀNG
 alter table GIO_HANG add constraint FK_SAN_PHAM_GIO_HANG
-foreign key (ID_SP) references SAN_PHAM(ID_SP)
+foreign key (ID_SP) references SAN_PHAM(ID_SP) on delete cascade on update cascade
 
 alter table GIO_HANG add constraint FK_DON_HANG_GIO_HANG
-foreign key (ID_DH) references DON_HANG(ID_DH)
+foreign key (ID_DH) references DON_HANG(ID_DH) on delete cascade on update cascade
 
 --TÀI KHOẢN
 alter table TAI_KHOAN add constraint FK_NHAN_VIEN_TAI_KHOAN
-foreign key (MA_NHAN_VIEN) references NHAN_VIEN(ID_NV)
+foreign key (MA_NHAN_VIEN) references NHAN_VIEN(ID_NV) on delete cascade on update cascade
 
 --ĐƠN NHẬP HÀNG
 alter table DON_NHAP_HANG add constraint FK_SAN_PHAM_DON_NHAP_HANG
-foreign key (SAN_PHAM_NHAP) references SAN_PHAM(ID_SP)
+foreign key (SAN_PHAM_NHAP) references SAN_PHAM(ID_SP) on delete cascade on update cascade
 
 alter table DON_NHAP_HANG add constraint FK_CHI_NHANH_DON_NHAP_HANG
-foreign key (CHI_NHANH_NHAP) references CHI_NHANH(ID_CN)
+foreign key (CHI_NHANH_NHAP) references CHI_NHANH(ID_CN) on delete cascade on update cascade
