@@ -13,9 +13,21 @@ app.use(express.urlencoded({
     extended: true
 }));
 
+app.engine('hbs', exphbs({
+    defaultLayout: 'main.hbs',
+    layoutsDir: 'views/_layouts',
+}
+));
+
 app.use(express.static('public'));
 
+app.get('/', async (req, res) => {
 
+    res.render('home',{
+     
+       });
+      
+     })
 
 // app.use(require('./middlewares/locals.mdw'));
 
