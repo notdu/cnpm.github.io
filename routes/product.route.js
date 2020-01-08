@@ -32,7 +32,7 @@ router.get('/',  async(req, res) => {
     const rows = await cnModel.allout();
     
    
-      res.render('instockProduct',{
+      res.render('outProduct',{
         empty: rows.length === 0,
        rows
       });
@@ -52,7 +52,7 @@ router.get('/',  async(req, res) => {
   })
 
   router.get('/add', async (req, res) => {
-    res.render('addBranch',{
+    res.render('addProduct',{
       
     });
   })
@@ -62,7 +62,7 @@ router.get('/',  async(req, res) => {
   
     const result = await cnModel.add(req.body);
    
-    res.redirect('/branch');
+    res.redirect('/product');
   });
   router.post('/patch', async (req, res) => {
     const result = await cnModel.patch(req.body);

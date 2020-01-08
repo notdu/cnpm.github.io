@@ -4,7 +4,7 @@
       <div class="top">
 
       
-      <h3 style="margin-top: 100px;">ALL BRANCH </h3>
+      <h3 style="margin-top: 100px;">All products</h3>
       <hr>
       
       <div class=" d-flex align-items-center">
@@ -19,18 +19,18 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Separated link</a>
         </div>
-         <form class="form-inline mr-2 mt-2 mt-md-0" action="/product/search" method="get">
+        <form class="form-inline mr-2 mt-2 mt-md-0" action="/product/search" method="get">
           <input name="keyword" class="form-control mr-sm-2" style="display: inline-block;width: 550px;" type="text"
             placeholder="Search" aria-label="Search">
            
-        <button type="submit" formaction="/branch/searchCN" id="addC" class="btn btn-outline-info my-2 mr-3 py-0 text-center" style="width:auto; height: 38px;">
+        <button type="submit" formaction="/product/search" id="addC" class="btn btn-outline-info my-2 mr-3 py-0 text-center" style="width:auto; height: 38px;">
           <i class="fa fa-search" aria-hidden="true"></i>
           Search</button>
         </form>
         {{!-- <a  id="addCategory" class="btn btn-info my-2 mr-3 py-0 text-center" style="width:auto; height: 38px;">+ Add item</a> --}}
 
 
-<a  href="/branch/add" class="btn btn-info my-2 mr-3 py-0 text-center" style="width:auto; height: 38px;">+ Add item</a>
+<a  href="/product/add" class="btn btn-info my-2 mr-3 py-0 text-center" style="width:auto; height: 38px;">+ Add item</a>
 </div>
 <form id="addCat" method="POST" style="display: none;">  
   <input name="ten_DM_cha" type="text" id="ten_DM_cha">
@@ -49,20 +49,23 @@
       <table class="table mt-3">
         <thead>
           <tr>
-            <th scope="row"><input type="checkbox" name="vehicle1" value="Bike"> STT</th>
-            <th scope="col">Branch's name</th>
-            <th scope="col">Address</th>
+            <th scope="row"><input type="checkbox" name="vehicle1" value="Bike"> ID</th>
+            <th scope="col">Product's name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Price</th>
+
             <th scope="col">Edit</th>
           </tr>
         </thead>
         <tbody>
           {{#rows}}
           <tr>
-            <th scope="row"><input type="checkbox" name="vehicle1" value="Bike"> {{ID_CN}}</th>
-            <td><a href="/branch/out/{{ID_CN}}">{{TEN_CN}}</a></td>
-            <td>{{DIA_CHI_CN}}</td>
+            <th scope="row"><input type="checkbox" name="vehicle1" value="Bike"> {{ID_SP}}</th>
+            <td>{{TEN_SP}}</td>
+            <td>{{TEN_LOAI}}</td>
+            <td>{{DON_GIA}}</td>
             <td class=" text-left">
-              <a class=" btn btn-outline-primary btn-sm" href="/branch/edit/{{ID_CN}}"><i class="fa fa-pencil-square" ></i>
+              <a class=" btn btn-outline-primary btn-sm" href="/product/edit/{{ID_SP}}"><i class="fa fa-pencil-square" ></i>
                </a>
             </td>
           </tr>

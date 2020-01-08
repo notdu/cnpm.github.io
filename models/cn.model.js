@@ -16,6 +16,10 @@ module.exports = {
 	FROM SAN_PHAM sp, SP_CN spcn
   WHERE sp.ID_SP=spcn.ID_SP and spcn.SO_LUONG>0 and spcn.ID_CN= ${id}`),
 
+  allProductCN: id => db.load(`SELECT sp.TEN_SP,sp.ID_SP, spcn.ID_CN
+	FROM SAN_PHAM sp, SP_CN spcn
+  WHERE sp.ID_SP=spcn.ID_SP and spcn.ID_CN= ${id}`),
+
   productCNout: id => db.load(`SELECT sp.TEN_SP,sp.ID_SP, spcn.SO_LUONG , spcn.ID_CN
 	FROM SAN_PHAM sp, SP_CN spcn
   WHERE sp.ID_SP=spcn.ID_SP and spcn.SO_LUONG=0 and spcn.ID_CN= ${id}`),
@@ -27,6 +31,8 @@ module.exports = {
   name: id => db.load(`select * from CHI_NHANH where ID_CN= ${id}`),
 
   add: entity => db.add('chi_nhanh', entity),
+ addLo: entity => db.add('don_nhap_hang', entity),
+
   del: id => db.del('chi_nhanh', { ID_CN: id }),
  
   patch: entity => {

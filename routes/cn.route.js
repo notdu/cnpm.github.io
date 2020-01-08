@@ -71,6 +71,21 @@ router.get('/',  async(req, res) => {
     });
   })
 
+  router.get('/:id/addLo', async (req, res) => {
+     const rows = await cnModel.allProductCN(req.params.id);
+    res.render('addLo',{
+      IDCN: req.params.id,
+      rows
+    });
+  })
+
+   router.post('/addLo', async(req,res) => {
+  
+    const result = await cnModel.addLo(req.body);
+   
+    res.redirect('/branch');
+  });
+
   router.get('/add', async (req, res) => {
     res.render('addBranch',{
       
@@ -99,9 +114,11 @@ router.get('/',  async(req, res) => {
   router.get('/:id', async (req, res) => {
     const name = await cnModel.name(req.params.id);
     const rows = await cnModel.productCN(req.params.id);
+    const IDCN = rows[0].ID_CN;
     console.log(name);
     res.render('branchProduct',{
       rows,
+      IDCN,
      name:name[0],
       empty: rows.length === 0
       
@@ -112,9 +129,11 @@ router.get('/',  async(req, res) => {
   router.get('/out/:id', async (req, res) => {
     const name = await cnModel.name(req.params.id);
     const rows = await cnModel.productCNout(req.params.id);
+    const IDCN = rows[0].ID_CN;
     console.log(name);
     res.render('branchProduct',{
       rows,
+       IDCN,
      name:name[0],
       empty: rows.length === 0
       

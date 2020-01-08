@@ -3,10 +3,8 @@ const db = require('../utils/db');
 module.exports = {
 
   all: () => db.load('SELECT sp.*, sum(spcn.SO_LUONG ) as sl,d.TEN_LOAI FROM SAN_PHAM sp, SP_CN spcn, danh_muc_sp d WHERE sp.ID_SP=spcn.ID_SP and spcn.SO_LUONG>0 AND d.ID_LOAI = sp.LOAI_SP GROUP BY sp.ID_SP '),
-  allout:()=> db.load(`	SELECT sp.*
-	FROM SAN_PHAM sp, SP_CN spcn
-  WHERE sp.ID_SP=spcn.ID_SP and spcn.SO_LUONG=0 
-	GROUP BY sp.ID_SP`),
+  allout:()=> db.load(`	SELECT sp.*, sum(spcn.SO_LUONG ) as sl,d.TEN_LOAI FROM SAN_PHAM sp, SP_CN spcn, danh_muc_sp d 
+WHERE (sp.ID_SP=spcn.ID_SP and spcn.SO_LUONG=0) or sp.ID_SP NOT IN (SELECT ID_SP FROM sp_cn) AND d.ID_LOAI = sp.LOAI_SP GROUP BY sp.ID_SP`),
   single: id => db.load(`SELECT *
 	FROM san_pham
   WHERE ID_SP= ${id}`),
